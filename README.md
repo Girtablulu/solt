@@ -12,6 +12,6 @@ rundeps:
 
 To use the command search-source you need to clone the whole phabricator git repo
 
-#Important
+# Important
 
 You need to edit the solt_config file in `/usr/share/solt/solt_config` and change the paths to yours, maybe I going to add a create conf script for setting this up in the future
