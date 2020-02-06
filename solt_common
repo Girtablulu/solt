@@ -1,0 +1,30 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_conf
+    . /usr/share/solt/solt_log
+done
+
+# Symlinks to common folder inside the Packaging folder
+function _create_common {
+    ln -sv $build_dir/common .
+    ln -sv common/Makefile.common .
+    ln -sv common/Makefile.toplevel Makefile
+    ln -sv common/Makefile.iso .
+}
+
+# Creates a Makefile  
+function _create_makefile {
+    echo "include ../Makefile.common" > Makefile;
+}
+
+# Checks if a common folder 
+function _clonefolder_check {
+    if [ ! -d "${clone_dir}" ]; then
+        _show_info "${clone_folder} folder did not exist creating it"
+        mkdir -p $build_dir/${clone_folder}
+        pushd $build_dir/${clone_folder}
+            _create_common
+        popd
+    fi
+}

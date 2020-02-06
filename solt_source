@@ -1,0 +1,46 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_conf
+done
+
+function _update_solus_source_common {
+    pushd $phabsource_dir/common
+        git pull
+    popd
+}
+
+# Update solussource Folder
+function _update_solus_source {
+    pushd $phabsource_dir
+        make clone -j20
+        _show_info "Repo updated"
+        make pull -j20
+        _show_info "Packages updated"
+    popd
+}
+
+# Search inside SolusSource folder
+function _search_solus_source {
+    for i in $phabsource_dir/*; do
+        ag -H $term ${i}/$place 2>/dev/null
+    done
+}
+
+function _search_solus_source2 {
+    for i in $phabsource_dir/*; do
+        ag -l $term ${i}/$place 2>/dev/null
+    done
+}
+
+function _remove_solus_source_pkg {
+    cat $phabsource_dir/common/packages >> /tmp/repo-source_tmp
+    ls -d */ >> /tmp/repo-source_tmp
+    cat /tmp/repo-source_tmp | sed 's\/\\g' | sort | uniq -u > /tmp/repo-source
+    pushd $phabsource_dir
+        for f in $(cat /tmp/repo-source) ; do
+            rm -rf "$f"
+        done
+    popd
+}
+    

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Naming stuff
+clone_folder="Diff_Clone"
+user="/home/fredu"
+
+# Packaging paths
+build_dir="${user}/Development/Packaging"
+clone_dir="${build_dir}/${clone_folder}"
+common_dir="${build_dir}/common"
+
+# local repo
+local_dir="/media/fredu/drive1/solbuild/local/"
+localsource_dir="/media/fredu/drive1/solbuild/sources"
+
+# Solus git package repo needs to be cloned 
+phabsource_dir="${user}/Development/SolusSource"
+
+# scripts
+pkgconfig_path="Scripts/epcsearch.py"
+yauto_path="Scripts/yauto.py"
+yupdate_path="/usr/share/ypkg/yupdate.py"

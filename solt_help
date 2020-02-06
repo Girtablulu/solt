@@ -1,0 +1,66 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_log
+done
+
+function _show_help_base {
+    echo ""
+    _bold "HELPPAGE FOR SOLT COMMANDS"
+    echo ""
+    echo " Syntax: solt [<Command>] [<Argument>] [<Additional Command>]"
+    echo ""
+    echo " Where <Command> is one of the following orders could be"
+    echo ""
+    echo "           pkgconf (pkg) - Search for package from a pkgconfig()"
+    echo "               repo (re) - To work with the Solus phabricator repo"
+    echo "           solbuild (sb) - To work within the Solbuild directory"
+    echo "   solbuild-update (sup) - Updates Solbuild"
+    echo "     source-search  (ss) - Search SourceRepo package.yml after a pattern"
+    echo "                    help - Shows this dialog"
+    echo ""
+}
+
+function _show_help_repo {
+    _bold "# repo"
+    echo "    --create        (--cr) : to create an new repo"
+    echo "    --update        (--up) : to update an existing solus repo"
+    echo "    --get                  : to git clone an existing solus repo"
+    echo "    --getb                 : to git clone an existing solus repo and bump version number"
+    echo "    --getc                 : to clone an existing solus repo and patch it with a phab diff"
+    echo "       - usage             : --getc reponame Dxxxx"
+    echo "    --geti                 : to clone an initial phab Diff"
+    echo "       - usage             : --geti reponame Dxxxx"
+    echo ""
+}
+
+function _show_help_solbuild {
+    _bold " # solbuild "
+    echo "    --index         (--i)  : To index the local repo"
+    echo "    --local-clean   (--cl) : Deleted all eopkg files in ../solbuild/local"
+    echo "    --clean-sources (--cs) : Deletes all source files in ..solbuild/source"
+    echo "    --clean-package (--cp) : Deletes a package source file in ..solbuild/source"
+    echo ""
+}
+
+function _show_help_solbuild_update {
+    _bold " # solbuild-update "
+    echo "    --common        (--co) : Updates only the common folders inside the packaging folder"
+    echo "    --all                  : Updates Solbuild and common folders"
+    echo ""
+}
+function _show_help_source {
+    _bold " # source-search"
+    echo "   - usage of search       : solt source-search <NAME> <FILE>"
+    echo "    --less           (--l) : Adding this flag after source-search will only show the file not the results to have a smaller output"
+    echo "    --up                   : Update the SourceRepo"
+    echo ""
+}
+
+function _show_help_all {
+    _show_help_base
+    _show_help_repo
+    _show_help_solbuild
+    _show_help_solbuild_update
+    _show_help_source
+}

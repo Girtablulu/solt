@@ -1,0 +1,30 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_conf
+    . /usr/share/solt/solt_log
+done
+
+# Checks if the folder already exists
+function _file_check {
+    if [ -z "$reponame" ]; then
+        _show_error "Please input package file name."
+        exit 5
+    elif [ -d "$@" ]; then
+        _show_error "Directory already exists."
+        exit 17
+    fi
+}
+
+# Checks if you have root privileges
+function _root_check {
+    if [[ "$EUID" -gt 0 ]]; then
+        _show_error "This operation requires admin privileges"
+        exit 87
+    fi
+}
+
+# Look up the base pkg for a pkgconfig() builddep
+function _search_pkgconfig {
+        python $common_dir/$pkgconfig_path $pkg
+}

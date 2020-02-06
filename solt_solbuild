@@ -1,0 +1,58 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_conf
+    . /usr/share/solt/solt_functions
+    . /usr/share/solt/solt_log
+done
+
+# Index local repo
+function _index_solbuild {
+    _root_check
+    _show_info "indexing local repo"
+    pushd $local_dir
+        eopkg index --skip-signing
+    popd
+    _show_confirm "Indexing completed"
+}
+
+# removes all eopkg inside local
+function _clean_solbuild {
+    _root_check
+    find $local_dir/ -type f -name '*.eopkg' -delete &
+    _show_confirm "Removed *.eopkg in ../solbuild/local"
+}
+
+# Removes all source packages
+function _clean_source_solbuild {
+    _root_check
+    rm -rf $localsource_dir/*
+    _show_confirm "Removed file sources in ../solbuild/sources"
+}
+
+# Removes a specific package inside the source folder
+function _clean_pkg_solbuild {
+    _root_check
+    find $localsource_dir -iname "$pkgname*" -print0 | xargs -0 rm
+    _show_confirm "Removed file"
+}
+
+# Update common folder
+function _update_common_solbuild {
+    _show_info "Updating common folders..."
+    pushd $common_dir
+        git pull
+    popd
+}
+
+# Update solbuild and common folders
+function _update_solcom_solbuild {
+    _root_check
+    _show_info "Updating Solbuild and common ..."
+    solbuild update
+    pushd $common_dir
+        git pull
+    popd
+    _show_confirm "Solbuild and Common updated"
+}
+

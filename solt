@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# Load all the basch scripts
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_help
+    . /usr/share/solt/solt_repo
+    . /usr/share/solt/solt_solbuild
+    . /usr/share/solt/solt_source
+done
+
+case "$1" in
+    pkgconf | pkg )
+        pkg="$2"
+        _search_pkgconfig
+    ;;
+    
+    repo | re )
+        reponame="$3"
+        diff="$4"
+        if [[ $2 == "--create" ]] || [[ $2 == "--cr" ]]; then
+            _create_repo
+        
+        elif [[ $2 == "--update" ]] || [[ $2 == "--up" ]] ; then
+            _update_repo
+            
+        elif [[ $2 == "--get" ]] ; then
+            _clone_repo
+            
+        elif [[ $2 == "--getb" ]] ; then
+            _bump_repo
+            
+        elif [[ $2 == "--getc" ]] ; then
+            _diff_repo
+            
+        elif [[ $2 == "--geti" ]] ; then
+            _initial_repo
+            
+        elif [[ $2 == "help" ]] || [[ $2 == "-h" ]] || [[ $2 == "?" ]] ; then
+            _show_help_repo
+        
+        else
+            printf "solt: 'repo $2' is not a repo command use one of the mentioned below \n"
+                _show_help_repo
+        fi
+    ;;
+    
+    solbuild | sb )
+        pkgname="$3"
+        if [[ $2 == "--index" ]] || [[ $2 == "--i" ]]; then
+            _index_solbuild
+            
+        elif [[ $2 == "--clean-local" ]] || [[ $2 == "--cl" ]] ; then
+            _clean_solbuild           
+
+        elif [[ $2 == "--clean-sources" ]] || [[ $2 == "--cs" ]] ;  then
+            _clean_source_solbuild
+
+        elif [[ $2 == "--clean-package" ]] || [[ $2 == "--cp" ]] ; then
+            _clean_pkg_solbuild
+        
+        elif [[ $2 == "help" ]] || [[ $2 == "-h" ]] || [[ $2 == "?" ]] ; then
+            _show_help_solbuild
+        
+        else
+            printf "solt: 'solbuild $2' is not a repo command use one of the mentioned below \n"
+                _show_help_solbuild
+        fi
+    ;;
+    
+    solbuild-update | sup )
+        if [[ $2 == "--common" ]] || [[ $2 == "--co" ]] ; then
+            _update_common_solbuild
+        
+        elif [[ $2 == "--all" ]]; then
+            _update_solcom_solbuild
+        
+        elif [[ $2 == "help" ]] || [[ $2 == "-h" ]] || [[ $2 == "?" ]] ; then
+            _show_help_solbuild_update
+
+        else
+            printf "solt: 'solbuild-update $2' is not a repo command use one of the mentioned below \n"
+                _show_help_solbuild_update
+        fi
+
+    ;;
+    
+    source-search | ss)
+        if [[ $2 == "" ]] ; then
+            printf "solt: 'source-search' is missing additional commands use one of the mentioned below \n"
+                _show_help_source
+        
+        elif [[ $2 == "--less" ]] || [[ $2 == "--l" ]]; then
+            term="$3"
+            place="$4"
+            _search_solus_source2
+            
+        elif [[ $2 == "--update" ]] || [[ $2 == "--up" ]] ; then
+            _update_solus_source_common
+            _update_solus_source
+        
+        elif [[ $2 == "--clean-repo" ]] ; then
+            _remove_solus_source_pkg
+            
+        elif [[ $2 == "help" ]] || [[ $2 == "-h" ]] || [[ $2 == "?" ]] ; then
+            _show_help_source
+            
+        else
+            term="$2"
+            place="$3"
+            _search_solus_source
+        fi
+        
+    ;;
+    
+    help | -h | -?)
+        _show_help_all
+    ;;
+
+    *)
+        _show_help_all
+    ;;
+    
+esac
