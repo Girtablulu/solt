@@ -54,6 +54,7 @@ function _show_help_source {
     echo "   - usage of search       : solt source-search <NAME> <FILE>"
     echo "    --less           (--l) : Adding this flag after source-search will only show the file not the results to have a smaller output"
     echo "    --up                   : Update the SourceRepo"
+    echo "    --clean-repo           : Removes old packages from the Source repo"
     echo ""
 }
 
