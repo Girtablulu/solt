@@ -7,20 +7,20 @@ done
 
 # Check if config file in user Home is there
 function _solt_check {
-    if [ -f "$HOME/.config/solt/solt.conf" ]; then
+    if [ -f "/etc/solt/solt.conf" ]; then
         :
     else
         _show_error "Please set up a solt.conf"
         echo ""
-        read -p "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
+        read -p "Would you like to copy a default config to /etc/solt? [y/n]" choice
         echo ""
         case $choice in
             y)
-            mkdir -p ~/.config/solt ;
-            echo "Copy solt default config to ~/.config/solt"
-            cp -R /usr/share/solt/solt_default.conf ~/.config/solt/solt.conf
+            sudo mkdir -p /etc/solt ;
+            echo "Copy solt default config to /etc/solt"
+            sudo cp -R /usr/share/solt/solt_default.conf /etc/solt/solt.conf
             echo ""
-            _show_request "Please edit your config file accordently to your liking inside ~/.config/solt/solt.conf"
+            _show_request "Please edit your config file accordently to your liking inside /etc/solt/solt.conf"
             echo ""
             ;;
             

@@ -7,8 +7,8 @@ for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_functions
 done
 
-if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source ~/.config/solt/solt.conf
+if [ -f "/etc/solt/solt.conf" ]; then
+        source /etc/solt/solt.conf
 fi
 
 # Create a repo package

@@ -6,8 +6,8 @@ for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_log
 done
 
-if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source ~/.config/solt/solt.conf
+if [ -f "/etc/solt/solt.conf" ]; then
+        source /etc/solt/solt.conf
 fi
 
 # Index local repo
@@ -43,6 +43,7 @@ function _clean_pkg_solbuild {
 
 # Update common folder
 function _update_common_solbuild {
+    _user_check
     _show_info "Updating common folders..."
     pushd $common_dir
         git pull
@@ -50,13 +51,9 @@ function _update_common_solbuild {
 }
 
 # Update solbuild and common folders
-function _update_solcom_solbuild {
-    _root_check
+function _update_solbuild {
     _show_info "Updating Solbuild and common ..."
-    solbuild update
-    pushd $common_dir
-        git pull
-    popd
+    sudo solbuild update
     _show_confirm "Solbuild and Common updated"
 }
 

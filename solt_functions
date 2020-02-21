@@ -6,8 +6,8 @@ for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_log
 done
 
-if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source ~/.config/solt/solt.conf
+if [ -f "/etc/solt/solt.conf" ]; then
+        source /etc/solt/solt.conf
 fi
 
 # Checks if the folder already exists
@@ -25,6 +25,14 @@ function _file_check {
 function _root_check {
     if [[ "$EUID" -gt 0 ]]; then
         _show_error "This operation requires admin privileges"
+        exit 87
+    fi
+}
+
+# Check if you are the user
+function _user_check {
+    if [[ `whoami` = 'root' ]]; then
+        _show_error "This operation should not be run as root"
         exit 87
     fi
 }
