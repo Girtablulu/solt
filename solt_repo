@@ -2,7 +2,9 @@
 
 # Load all the basch scripts
 for file in /usr/share/solt/*; do
-    source ~/.config/solt/solt.conf
+    if [ -f "$HOME/.config/solt/solt.conf" ]; then
+        source ~/.config/solt/solt.conf
+    fi
     source /usr/share/solt/solt_common
     source /usr/share/solt/solt_log
     source /usr/share/solt/solt_functions
