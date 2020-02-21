@@ -12,8 +12,8 @@ function _solt_check {
         read -p "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
         case $choice in
             y)
-            mkdir -p ~/.config/solt
-            cp -vR /usr/share/solt/solt_default.config ~/.config/solt/solt.config
+            mkdir -p ~/.config/solt ;
+            cp -vR /usr/share/solt/solt_default.conf ~/.config/solt/solt.conf
             _show_info "Please edit your config file accordently to your liking"
             ;;
             
