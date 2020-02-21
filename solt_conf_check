@@ -12,7 +12,7 @@ function _solt_check {
     else
         _show_error "Please set up a solt.conf"
         echo ""
-        read -p _bold "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
+        read -p "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
         echo ""
         case $choice in
             y)
