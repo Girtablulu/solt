@@ -13,7 +13,7 @@ function _solt_check {
         case $choice in
             y)
             mkdir -p ~/.config/solt
-            cp /usr/share/solt/solt_default.config ~/.config/solt/solt.config
+            sudo cp /usr/share/solt/solt_default.config ~/.config/solt/solt.config
             _show_info "Please edit your config file accordently to your liking"
             ;;
             
@@ -25,6 +25,6 @@ function _solt_check {
     if [ -f "$HOME/.config/solt/solt.conf" ]; then
         source $HOME/.config/solt/solt.conf
     else
-        source /usr/share/solt/soltdefault.conf
+        source /usr/share/solt/solt_default.conf
     fi
 }
