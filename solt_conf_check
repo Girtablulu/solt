@@ -1,10 +1,10 @@
 #!/bin/bash
 
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_log
+    source /usr/share/solt/solt_log
 done
 
-function _solt_check (
+function _solt_check {
     if [ -f "$HOME/.config/solt/solt.conf" ]; then
         :
     else
@@ -27,4 +27,4 @@ function _solt_check (
     else
         source /usr/share/solt/soltdefault.conf
     fi
-)
+}
