@@ -17,7 +17,9 @@ function _solt_check {
         case $choice in
             y)
             mkdir -p ~/.config/solt ;
-            cp -vR /usr/share/solt/solt_default.conf ~/.config/solt/solt.conf
+            echo "Copy solt default config to ~/.config/solt"
+            cp -R /usr/share/solt/solt_default.conf ~/.config/solt/solt.conf
+            echo ""
             _show_request "Please edit your config file accordently to your liking inside ~/.config/solt/solt.conf"
             echo ""
             ;;
