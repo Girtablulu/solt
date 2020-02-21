@@ -31,7 +31,9 @@ install_data(
     'solt_log',
     'solt_repo',
     'solt_solbuild',
-    'solt_source',    
+    'solt_source',
+    'LICENSE',
+    'README.md',
     install_dir: solt_dir,
 )
 
