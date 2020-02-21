@@ -1,0 +1,19 @@
+name       : solt
+version    : 0.1
+release    : 1
+source     :
+    - git|https://github.com/Girtablulu/solt.git : v0.1
+license    : MIT
+component  : programming.tools
+summary    : simple helper bash script for packager
+description: |
+    simple helper bash script for packager
+rundeps    :
+    - powerline-fonts
+    - silver-searcher
+setup      : |
+    %meson_configure
+build      : |
+    %ninja_build
+install    : |
+    %ninja_install

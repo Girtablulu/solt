@@ -12,4 +12,4 @@ To use the command search-source you need to clone the whole phabricator git rep
 
 # Important
 
-You need to edit the solt_config file in `~/.config/solt/solt.conf` and change the paths to your liking
+You need to edit the solt_config file in `/etc/solt` and change the paths to your liking after you run it the first time
