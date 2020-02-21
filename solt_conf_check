@@ -10,13 +10,16 @@ function _solt_check {
     if [ -f "$HOME/.config/solt/solt.conf" ]; then
         :
     else
-        _show_info "Please set up a solt.conf"
-        read -p "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
+        _show_error "Please set up a solt.conf"
+        echo ""
+        read -p _bold "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
+        echo ""
         case $choice in
             y)
             mkdir -p ~/.config/solt ;
             cp -vR /usr/share/solt/solt_default.conf ~/.config/solt/solt.conf
-            _show_info "Please edit your config file accordently to your liking"
+            _show_request "Please edit your config file accordently to your liking inside ~/.config/solt/solt.conf"
+            echo ""
             ;;
             
             n) exit 0 
