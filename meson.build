@@ -13,11 +13,16 @@ project(
 path_prefix = get_option('prefix')
 path_datadir = join_paths(path_prefix, get_option('datadir'))
 
+bin_dir = join_paths(path_datadir, 'bin')
 solt_dir = join_paths(path_datadir, 'solt')
 completions_dir = join_paths(path_datadir, 'bash-completions', 'completions', 'solt')
 
 install_data(
     'solt',
+    install_dir: bin_dir,
+)
+
+install_data(
     'solt_common',
     'solt_conf',
     'solt_functions',
