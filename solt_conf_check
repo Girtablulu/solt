@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# Load all the basch scripts
 for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_log
 done
 
+# Check if config file in user Home is there
 function _solt_check {
     if [ -f "$HOME/.config/solt/solt.conf" ]; then
         :
@@ -20,11 +22,5 @@ function _solt_check {
             n) exit 0 
             ;;
         esac
-    fi
-
-    if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source $HOME/.config/solt/solt.conf
-    else
-        source /usr/share/solt/solt_default.conf
     fi
 }

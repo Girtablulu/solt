@@ -1,11 +1,11 @@
 #!/bin/bash
 
-for file in /usr/share/solt/*; do
-    if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source ~/.config/solt/solt.conf
-    fi
-done
+# Load all the basch scripts
+if [ -f "$HOME/.config/solt/solt.conf" ]; then
+    source ~/.config/solt/solt.conf
+fi
 
+# Update common folder
 function _update_solus_source_common {
     pushd $phabsource_dir/common
         git pull

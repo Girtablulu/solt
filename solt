@@ -9,8 +9,10 @@ for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_conf_check
 done
 
+# Check by first run if config file is installed
 _solt_check
 
+# Solt functions
 case "$1" in
     pkgconf | pkg )
         pkg="$2"
@@ -116,10 +118,6 @@ case "$1" in
     ;;
     
     help | -h | -?)
-        _show_help_all
-    ;;
-
-    *)
         _show_help_all
     ;;
     

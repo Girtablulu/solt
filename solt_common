@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# Load all the basch scripts
 for file in /usr/share/solt/*; do
-    if [ -f "$HOME/.config/solt/solt.conf" ]; then
-        source ~/.config/solt/solt.conf
-    fi
     source /usr/share/solt/solt_log
 done
+
+if [ -f "$HOME/.config/solt/solt.conf" ]; then
+        source ~/.config/solt/solt.conf
+fi
 
 # Symlinks to common folder inside the Packaging folder
 function _create_common {

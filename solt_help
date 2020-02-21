@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# Load all the basch scripts
 for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_log
 done
 
+# Show generel help text
 function _show_help_base {
     echo ""
     _bold "HELPPAGE FOR SOLT COMMANDS"
@@ -21,6 +23,7 @@ function _show_help_base {
     echo ""
 }
 
+# Show solt_repo help
 function _show_help_repo {
     _bold "# repo"
     echo "    --create        (--cr) : to create an new repo"
@@ -34,6 +37,7 @@ function _show_help_repo {
     echo ""
 }
 
+# Show solt_solbuild help
 function _show_help_solbuild {
     _bold " # solbuild "
     echo "    --index         (--i)  : To index the local repo"
@@ -49,6 +53,8 @@ function _show_help_solbuild_update {
     echo "    --all                  : Updates Solbuild and common folders"
     echo ""
 }
+
+# Show solt_source help
 function _show_help_source {
     _bold " # source-search"
     echo "   - usage of search       : solt source-search <NAME> <FILE>"
@@ -58,6 +64,8 @@ function _show_help_source {
     echo ""
 }
 
+
+# Show all help texts
 function _show_help_all {
     _show_help_base
     _show_help_repo
