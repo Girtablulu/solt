@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_log
+    source /usr/share/solt/solt_log
 done
 
 function _show_help_base {

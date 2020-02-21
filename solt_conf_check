@@ -1,0 +1,30 @@
+#!/bin/bash
+
+for file in /usr/share/solt/*; do
+    . /usr/share/solt/solt_log
+done
+
+function _solt_check (
+    if [ -f "$HOME/.config/solt/solt.conf" ]; then
+        :
+    else
+        _show_info "Please set up a solt.conf"
+        read -p "Would you like to copy a default config to ~/.config/solt? [y/n]" choice
+        case $choice in
+            y)
+            mkdir -p ~/.config/solt
+            cp /usr/share/solt/solt_default.config ~/.config/solt/solt.config
+            _show_info "Please edit your config file accordently to your liking"
+            ;;
+            
+            n) exit 0 
+            ;;
+        esac
+    fi
+
+    if [ -f "$HOME/.config/solt/solt.conf" ]; then
+        source $HOME/.config/solt/solt.conf
+    else
+        source /usr/share/solt/soltdefault.conf
+    fi
+)

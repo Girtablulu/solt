@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_conf
+    source ~/.config/solt/solt.conf
 done
 
 function _update_solus_source_common {

@@ -2,10 +2,10 @@
 
 # Load all the basch scripts
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_common
-    . /usr/share/solt/solt_conf
-    . /usr/share/solt/solt_log
-    . /usr/share/solt/solt_functions
+    source ~/.config/solt/solt.conf
+    source /usr/share/solt/solt_common
+    source /usr/share/solt/solt_log
+    source /usr/share/solt/solt_functions
 done
 
 # Create a repo package

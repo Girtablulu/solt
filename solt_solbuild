@@ -1,9 +1,9 @@
 #!/bin/bash
 
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_conf
-    . /usr/share/solt/solt_functions
-    . /usr/share/solt/solt_log
+    source ~/.config/solt/solt.conf
+    source /usr/share/solt/solt_functions
+    source /usr/share/solt/solt_log
 done
 
 # Index local repo

@@ -24,13 +24,14 @@ install_data(
 
 install_data(
     'solt_common',
-    'solt_conf',
+    'solt_conf_check',
+    'solt_default.conf',
     'solt_functions',
     'solt_help',
     'solt_log',
     'solt_repo',
     'solt_solbuild',
-    'solt_source',
+    'solt_source',    
     install_dir: solt_dir,
 )
 

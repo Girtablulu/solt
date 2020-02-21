@@ -2,11 +2,14 @@
 
 # Load all the basch scripts
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_help
-    . /usr/share/solt/solt_repo
-    . /usr/share/solt/solt_solbuild
-    . /usr/share/solt/solt_source
+    source /usr/share/solt/solt_help
+    source /usr/share/solt/solt_repo
+    source /usr/share/solt/solt_solbuild
+    source /usr/share/solt/solt_source
+    source /usr/share/solt/solt_conf_check
 done
+
+_solt_check
 
 case "$1" in
     pkgconf | pkg )

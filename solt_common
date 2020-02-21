@@ -1,8 +1,8 @@
 #!/bin/bash
 
 for file in /usr/share/solt/*; do
-    . /usr/share/solt/solt_conf
-    . /usr/share/solt/solt_log
+    source ~/.config/solt/solt.conf
+    source /usr/share/solt/solt_log
 done
 
 # Symlinks to common folder inside the Packaging folder
