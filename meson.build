@@ -13,7 +13,7 @@ project(
 path_prefix = get_option('prefix')
 path_datadir = join_paths(path_prefix, get_option('datadir'))
 
-bin_dir = join_paths(path_datadir, 'bin')
+bin_dir = join_paths(path_prefix, 'bin')
 solt_dir = join_paths(path_datadir, 'solt')
 completions_dir = join_paths(path_datadir, 'bash-completions', 'completions', 'solt')
 
