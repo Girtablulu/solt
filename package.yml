@@ -1,6 +1,6 @@
 name       : solt
-version    : 0.1
-release    : 1
+version    : 0.1.1
+release    : 2
 source     :
     - git|https://github.com/Girtablulu/solt.git : v0.1
 license    : MIT
@@ -9,6 +9,7 @@ summary    : simple helper bash script for packager
 description: |
     simple helper bash script for packager
 rundeps    :
+    - git
     - powerline-fonts
     - silver-searcher
 setup      : |
