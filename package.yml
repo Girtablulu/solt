@@ -2,7 +2,7 @@ name       : solt
 version    : 0.1.1
 release    : 2
 source     :
-    - git|https://github.com/Girtablulu/solt.git : v0.1
+    - git|https://github.com/Girtablulu/solt.git : v0.1.1
 license    : MIT
 component  : programming.tools
 summary    : simple helper bash script for packager
