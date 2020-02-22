@@ -36,17 +36,6 @@ function _search_solus_source2 {
 }
 
 function _remove_solus_source_pkg {
-    cat $phabsource_dir/common/packages >> /tmp/repo-source_tmp
-    ls -d $phabsource_dir/* | sed 's|.*/||' >> /tmp/repo-source_tmp
-    sed -i 's|common||g' /tmp/repo-source_tmp
-    sed -i 's|Makefile.common||g' /tmp/repo-source_tmp
-    sed -i 's|Makefile.iso||g' /tmp/repo-source_tmp
-    sed -i 's|Makefile||g' /tmp/repo-source_tmp
-    cat /tmp/repo-source_tmp | sort | uniq -u > /tmp/repo-source
-    pushd $phabsource_dir
-        for f in $(cat /tmp/repo-source) ; do
-            rm -rf "$f"
-        done
-    popd
+    go run $phabsource_dir/common/Go/deprecate_packages.go
 }
     
