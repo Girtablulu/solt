@@ -22,44 +22,44 @@ function _create_repo {
         git init;
         _create_makefile
         _show_confirm "Makefile created"
-    exec bash
+    _exec_shell
 }
 
 # Update a repo
 function _update_repo {
     _file_check $build_dir/$reponame
-    git clone ssh://vcs@dev.getsol.us:2222/source/$reponame.git $build_dir/$reponame
+    git clone $rep_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
         _show_request "Please enter new version no and url"
         read VERSION URL
             python $yupdate_path ${VERSION} ${URL}
-    exec bash
+    _exec_shell
 }
 
 # Clone a repo
 function _clone_repo {
     _file_check $build_dir/$reponame
-    git clone ssh://vcs@dev.getsol.us:2222/source/$reponame.git $build_dir/$reponame
+    git clone $rep_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
-    exec bash
+    _exec_shell
 }
 
 # Clone and bump a repo
 function _bump_repo {
     _file_check $build_dir/$reponame
-    git clone ssh://vcs@dev.getsol.us:2222/source/$reponame.git $build_dir/$reponame
+    git clone $rep_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
         make bump
-    exec bash
+    _exec_shell
 }
 
 # Clone a Diff for a repo
 function _diff_repo {
     _clonefolder_check
-    git clone ssh://vcs@dev.getsol.us:2222/source/$reponame.git $clone_dir/$reponame
+    git clone $rep_url/$reponame.git $clone_dir/$reponame
     cd $clone_dir/$reponame
         arc patch $diff
-    exec bash
+    _exec_shell
 }
 
 # Clone an initial diff
@@ -70,5 +70,5 @@ function _initial_repo {
         git init
         git commit -s -m "Test repo" --allow-empty
         arc patch $diff
-    exec bash
+    _exec_shell
 }

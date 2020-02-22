@@ -22,7 +22,7 @@ function _create_makefile {
     echo "include ../Makefile.common" > Makefile;
 }
 
-# Checks if a common folder 
+# Checks if a common folder exists
 function _clonefolder_check {
     if [ ! -d "${clone_dir}" ]; then
         _show_info "${clone_folder} folder did not exist creating it"
@@ -31,4 +31,9 @@ function _clonefolder_check {
             _create_common
         popd
     fi
+}
+
+# Look up the base pkg for a pkgconfig() builddep
+function _search_pkgconfig {
+        python $common_dir/$pkgconfig_path $pkg
 }

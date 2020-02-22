@@ -2,11 +2,12 @@
 
 # Load all the basch scripts
 for file in /usr/share/solt/*; do
+    source /usr/share/solt/solt_common
+    source /usr/share/solt/solt_conf_check
     source /usr/share/solt/solt_help
     source /usr/share/solt/solt_repo
     source /usr/share/solt/solt_solbuild
     source /usr/share/solt/solt_source
-    source /usr/share/solt/solt_conf_check
 done
 
 # Check by first run if config file is installed

@@ -37,7 +37,12 @@ function _user_check {
     fi
 }
 
-# Look up the base pkg for a pkgconfig() builddep
-function _search_pkgconfig {
-        python $common_dir/$pkgconfig_path $pkg
+# Check which shell its using and executes it
+
+function _exec_shell {
+    if [ `echo $0` ] = "/bin/bash" ; then
+        exec bash
+    elif [ `echo $0` ] = "/bin/zsh" ; then
+        exec zsh
+    fi
 }
