@@ -28,7 +28,7 @@ function _create_repo {
 # Update a repo
 function _update_repo {
     _file_check $build_dir/$reponame
-    git clone $rep_url/$reponame.git $build_dir/$reponame
+    git clone $repo_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
         _show_request "Please enter new version no and url"
         read VERSION URL
@@ -39,7 +39,7 @@ function _update_repo {
 # Clone a repo
 function _clone_repo {
     _file_check $build_dir/$reponame
-    git clone $rep_url/$reponame.git $build_dir/$reponame
+    git clone $repo_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
     _exec_shell
 }
@@ -47,7 +47,7 @@ function _clone_repo {
 # Clone and bump a repo
 function _bump_repo {
     _file_check $build_dir/$reponame
-    git clone $rep_url/$reponame.git $build_dir/$reponame
+    git clone $repo_url/$reponame.git $build_dir/$reponame
     cd $build_dir/$reponame
         make bump
     _exec_shell
@@ -56,7 +56,7 @@ function _bump_repo {
 # Clone a Diff for a repo
 function _diff_repo {
     _clonefolder_check
-    git clone $rep_url/$reponame.git $clone_dir/$reponame
+    git clone $repo_url/$reponame.git $clone_dir/$reponame
     cd $clone_dir/$reponame
         arc patch $diff
     _exec_shell
