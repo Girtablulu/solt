@@ -36,6 +36,8 @@ function _search_solus_source2 {
 }
 
 function _remove_solus_source_pkg {
-    go run $phabsource_dir/common/Go/deprecate_packages.go
+    pushd $phabsource_dir
+        go run common/Go/deprecate_packages.go
+    popd
 }
     

@@ -56,13 +56,19 @@ case "$1" in
             _index_solbuild
             
         elif [[ $2 == "--clean-local" ]] || [[ $2 == "--cl" ]] ; then
-            _clean_solbuild           
+            _clean_local_solbuild           
 
         elif [[ $2 == "--clean-sources" ]] || [[ $2 == "--cs" ]] ;  then
             _clean_source_solbuild
+            
+         elif [[ $2 == "--clean-all" ]] || [[ $2 == "--call" ]] ; then
+            _clean_source_solbuild
+            _clean_local_solbuild            
+            _clean_pkg_packages
+            _clean_ccache
 
         elif [[ $2 == "--clean-package" ]] || [[ $2 == "--cp" ]] ; then
-            _clean_pkg_solbuild
+            _clean_pkg_solbuild        
         
         elif [[ $2 == "help" ]] || [[ $2 == "-h" ]] || [[ $2 == "?" ]] ; then
             _show_help_solbuild

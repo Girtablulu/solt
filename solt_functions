@@ -28,15 +28,6 @@ function _root_check {
         exit 87
     fi
 }
-
-# Check if you are the user
-function _user_check {
-    if [[ `whoami` = 'root' ]]; then
-        _show_error "This operation should not be run as root"
-        exit 87
-    fi
-}
-
 # Check which shell its using and executes it
 
 function _exec_shell {

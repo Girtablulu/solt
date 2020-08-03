@@ -21,7 +21,7 @@ function _index_solbuild {
 }
 
 # removes all eopkg inside local
-function _clean_solbuild {
+function _clean_local_solbuild {
     _root_check
     find $local_dir/ -type f -name '*.eopkg' -delete &
     _show_confirm "Removed *.eopkg in ../solbuild/local"
@@ -41,6 +41,27 @@ function _clean_pkg_solbuild {
     _show_confirm "Removed file"
 }
 
+# Removes all packages inside the source folder
+function _clean_pkg_packages {
+    _root_check
+    rm -rf $solbuild_dir/packages/*
+    _show_confirm "Removed packages files"
+}
+
+# Removes all packages inside the source folder
+function _clean_ccache {
+    _root_check
+    rm -rf $solbuild_dir/ccache/*
+    _show_confirm "Cleaned ccache"
+}
+
+
+# Removes a specific package inside the source folder
+function _clean_pkg_packages {
+    _root_check
+    rm -rf $solbuild_dir/packages/*
+    _show_confirm "Removed packages files"
+}
 # Update common folder
 function _update_common_solbuild {
     _user_check
