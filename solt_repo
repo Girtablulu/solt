@@ -28,8 +28,9 @@ function _create_repo {
 # Update a repo
 function _update_repo {
     _file_check $build_dir/$reponame
+    cd $build_dir
     make $reponame.clone
-    cd $build_dir/$reponame
+    cd $reponame
         _show_request "Please enter new version no and url"
         read VERSION URL
             python $yupdate_path ${VERSION} ${URL}
@@ -39,16 +40,18 @@ function _update_repo {
 # Clone a repo
 function _clone_repo {
     _file_check $build_dir/$reponame
+    cd $build_dir
     make $reponame.clone
-    cd $build_dir/$reponame
+    cd $reponame
     _exec_shell
 }
 
 # Clone and bump a repo
 function _bump_repo {
     _file_check $build_dir/$reponame
+    cd $build_dir
     make $reponame.clone
-    cd $build_dir/$reponame
+    cd $reponame
         make bump
     _exec_shell
 }
@@ -56,8 +59,9 @@ function _bump_repo {
 # Clone a Diff for a repo
 function _diff_repo {
     _clonefolder_check
+    cd $clone_dir
     make $reponame.clone
-    cd $clone_dir/$reponame
+    cd $reponame
         arc patch $diff
     _exec_shell
 }
