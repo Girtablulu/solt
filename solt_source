@@ -25,17 +25,16 @@ function _update_solus_source {
 
 # Search inside SolusSource folder
 function _search_solus_source {
-    for i in $phabsource_dir/*; do
-        ag -QH $term ${i}/$place 2>/dev/null
-    done
+    pushd $phabsource_dir
+        ag --silent -QH $term ./*/$place
+    popd
 }
 
 function _search_solus_source2 {
-    for i in $phabsource_dir/*; do
-        ag -Ql $term ${i}/$place 2>/dev/null
-    done
+    pushd $phabsource_dir
+       ag --silent -Ql $term ./*/$place
+    popd
 }
-
 function _remove_solus_source_pkg {
     pushd $phabsource_dir
         go run common/Go/deprecate_packages.go
