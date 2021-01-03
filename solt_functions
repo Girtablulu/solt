@@ -23,11 +23,20 @@ function _file_check {
 
 # Checks if you have root privileges
 function _root_check {
-    if [[ "$EUID" -gt 0 ]]; then
+    if [[ "$(id -u)" != "0" ]]; then
         _show_error "This operation requires admin privileges"
         exit 87
     fi
 }
+
+# Checks if you have root privileges
+function _user_check {
+    if [[ "$(id -u)" = "0" ]]; then
+        _show_error "This operation should be run as user"
+        exit 87
+    fi
+}
+
 # Check which shell its using and executes it
 
 function _exec_shell {

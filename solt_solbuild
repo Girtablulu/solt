@@ -72,9 +72,13 @@ function _update_common_solbuild {
 }
 
 # Update solbuild and common folders
-function _update_solbuild {
+function _update_solcom_solbuild {
+    _user_check
     _show_info "Updating Solbuild and common ..."
-    sudo solbuild update
+    pushd $common_dir
+        git pull
+    popd
+    exec sudo solbuild up
     _show_confirm "Solbuild and Common updated"
 }
 
