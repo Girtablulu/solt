@@ -3,6 +3,7 @@
 # Load all the basch scripts
 for file in /usr/share/solt/*; do
     source /usr/share/solt/solt_log
+    source /usr/share/solt/solt_functions
 done
 
 if [ -f "/etc/solt/solt.conf" ]; then

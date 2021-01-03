@@ -46,3 +46,12 @@ function _exec_shell {
         exec zsh
     fi
 }
+
+# kill output of pushd/popd
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
